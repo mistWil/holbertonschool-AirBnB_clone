@@ -46,9 +46,9 @@ class BaseModel:
 
     def save(self):
         """
-        Sauvegarde l'instance actuelle dans le système de stockage.
+        Update the updated_at instance with current datetime
         """
-        storage.new(self)
+        self.updated_at = datetime.now()
         storage.save()
 
     def __init__(self, *args, **kwargs):
