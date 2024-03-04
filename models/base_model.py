@@ -35,6 +35,7 @@ BaseModel
 
 import uuid
 from datetime import datetime
+from models.__init__ import storage
 
 
 class BaseModel:
@@ -61,6 +62,7 @@ class BaseModel:
         jour de l'instance.
         """
         if kwargs:
+            self.id = str(uuid.uuid4())
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key == 'created_at' or key == 'updated_at':
@@ -83,8 +85,12 @@ class BaseModel:
 
     def save(self):
         """
-        Met à jour l'attribut 'updated_at' avec la date et l'heure actuelles.
+        Saves the object to the storage.
+
+        If it's a new instance, adds it to storage, otherwise updates it.
         """
+        storage.new(self)
+        storage.save()
         self.updated_at = datetime.now()  # Mise à jour de la date
         # et l'heure de mise à jour
 
