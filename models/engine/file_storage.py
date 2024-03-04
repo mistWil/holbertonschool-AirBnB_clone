@@ -40,7 +40,8 @@ import json
 
 
 class FileStorage:
-    """Handles serialization and deserialization of objects to/from JSON file."""
+    """Handles serialization and deserialization of objects
+    to/from JSON file."""
 
     __file_path = "file.json"
     __objects = {}
@@ -80,7 +81,8 @@ class FileStorage:
                     class_name, obj_id = key.split('.')
                     from models.base_model import BaseModel
                     self.__objects[key] = BaseModel(**value)
-            # Supprimez ou commentez la ligne suivante pour éviter les sorties standard supplémentaires
+            # Supprimez ou commentez la ligne suivante pour
+            # éviter les sorties standard supplémentaires
             # print("Reloaded objects:", data)
         except FileNotFoundError:
             pass
