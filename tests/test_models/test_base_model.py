@@ -11,7 +11,26 @@ class TestBaseModel(unittest.TestCase):
 
     def test_id(self):
         self.assertIsInstance(self.model.id, str)
+        
+    def test_init_no_kwargs(self):
+        self.assertIsInstance(self.model.id, str)
+        self.assertIsInstance(self.model.created_at, datetime)
+        self.assertIsInstance(self.model.updated_at, datetime)
+        self.assertEqual(self.model.created_at, self.model.updated_at)
 
+    def test_init_with_kwargs(self):
+        kwargs = {
+            'id': '1234',
+            'created_at': '2022-01-01T00:00:00.000000',
+            'updated_at': '2022-01-01T00:00:00.000000'
+        }
+        model = BaseModel(**kwargs)
+        self.assertEqual(model.id, '1234')
+        self.assertEqual(model.created_at,
+                         datetime.strptime(kwargs['created_at'], "%Y-%m-%dT%H:%M:%S.%f"))
+        self.assertEqual(model.updated_at,
+                         datetime.strptime(kwargs['updated_at'], "%Y-%m-%dT%H:%M:%S.%f"))
+        
     def test_created_at(self):
         self.assertIsInstance(self.model.created_at, datetime)
 

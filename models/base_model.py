@@ -43,22 +43,32 @@ class BaseModel:
     Elle fournit des attributs et des méthodes communs.
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         Initialise une nouvelle instance de BaseModel.
 
-        Attributs:
-            id (str): Identifiant unique de l'instance.
-            created_at (datetime): Date et heure de création de l'instance.
-            updated_at (datetime): Date et heure de dernière mise à
-            jour de l'instance.
+    Args:
+        *args: Arguments positionnels. (Dans cet exercice, *args
+        n'est pas utilisé)
+        **kwargs: Arguments nommés. Utilisé pour initialiser une
+        instance à partir d'une
+        représentation de dictionnaire.
+
+    Attributs:
+        id (str): Identifiant unique de l'instance.
+        created_at (datetime): Date et heure de création de l'instance.
+        updated_at (datetime): Date et heure de dernière mise à
+        jour de l'instance.
         """
-        self.id = str(uuid.uuid4())  # Attribution d'un id unique à
-        # chaque instance
-        self.created_at = datetime.now()  # Attribution de la date et
-        # l'heure de création
-        self.updated_at = datetime.now()  # Attribution de la date et
-        # l'heure de mise à jour
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    if key == 'created_at' or key == 'updated_at':
+                        value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = self.updated_at = datetime.now()
 
     def __str__(self):
         """
