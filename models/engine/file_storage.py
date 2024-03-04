@@ -39,6 +39,7 @@ add a call to the method new(self) on storage
 import json
 
 
+
 class FileStorage:
     """Handles serialization and deserialization of objects
     to/from JSON file."""
@@ -81,8 +82,5 @@ class FileStorage:
                     class_name, obj_id = key.split('.')
                     from models.base_model import BaseModel
                     self.__objects[key] = BaseModel(**value)
-            # Supprimez ou commentez la ligne suivante pour
-            # éviter les sorties standard supplémentaires
-            # print("Reloaded objects:", data)
         except FileNotFoundError:
             pass
