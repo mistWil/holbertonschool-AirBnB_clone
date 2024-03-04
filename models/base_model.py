@@ -35,7 +35,6 @@ BaseModel
 
 import uuid
 from datetime import datetime
-from models.__init__ import storage
 
 
 class BaseModel:
@@ -43,6 +42,11 @@ class BaseModel:
     Cette classe représente un modèle de base pour d'autres classes.
     Elle fournit des attributs et des méthodes communs.
     """
+
+    def save(self):
+        from models import storage  # Import local
+        storage.new(self)
+        storage.save()
 
     def __init__(self, *args, **kwargs):
         """
@@ -62,7 +66,6 @@ class BaseModel:
         jour de l'instance.
         """
         if kwargs:
-            self.id = str(uuid.uuid4())
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key == 'created_at' or key == 'updated_at':
@@ -82,17 +85,6 @@ class BaseModel:
         """
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
-
-    def save(self):
-        """
-        Saves the object to the storage.
-
-        If it's a new instance, adds it to storage, otherwise updates it.
-        """
-        storage.new(self)
-        storage.save()
-        self.updated_at = datetime.now()  # Mise à jour de la date
-        # et l'heure de mise à jour
 
     def to_dict(self):
         """

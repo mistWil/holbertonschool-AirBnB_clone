@@ -5,6 +5,7 @@ import unittest
 from models.base_model import BaseModel
 from datetime import datetime
 
+
 class TestBaseModel(unittest.TestCase):
     def setUp(self):
         self.model = BaseModel()

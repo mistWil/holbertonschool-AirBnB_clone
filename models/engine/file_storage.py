@@ -73,12 +73,13 @@ class FileStorage:
             json.dump(serialized_objects, file)
 
     def reload(self):
-        """Deserializes JSON file to __objects dictionary."""
         try:
             with open(self.__file_path, 'r') as file:
                 data = json.load(file)
                 for key, value in data.items():
                     class_name, obj_id = key.split('.')
-                    self.__objects[key] = eval(class_name)(**value)
+                    # Ajoutez une importation locale de BaseModel ici
+                    from models.base_model import BaseModel
+                    self.__objects[key] = BaseModel(**value)
         except FileNotFoundError:
             pass
