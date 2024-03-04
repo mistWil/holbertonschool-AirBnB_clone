@@ -35,6 +35,7 @@ BaseModel
 
 import uuid
 from datetime import datetime
+from models import storage
 
 
 class BaseModel:
@@ -44,7 +45,9 @@ class BaseModel:
     """
 
     def save(self):
-        from models import storage  # Import local
+        """
+        Sauvegarde l'instance actuelle dans le système de stockage.
+        """
         storage.new(self)
         storage.save()
 
@@ -52,18 +55,18 @@ class BaseModel:
         """
         Initialise une nouvelle instance de BaseModel.
 
-    Args:
-        *args: Arguments positionnels. (Dans cet exercice, *args
-        n'est pas utilisé)
-        **kwargs: Arguments nommés. Utilisé pour initialiser une
-        instance à partir d'une
-        représentation de dictionnaire.
+        Args:
+            *args: Arguments positionnels. (Dans cet exercice, *args
+            n'est pas utilisé)
+            **kwargs: Arguments nommés. Utilisé pour initialiser une
+            instance à partir d'une
+            représentation de dictionnaire.
 
-    Attributs:
-        id (str): Identifiant unique de l'instance.
-        created_at (datetime): Date et heure de création de l'instance.
-        updated_at (datetime): Date et heure de dernière mise à
-        jour de l'instance.
+        Attributs:
+            id (str): Identifiant unique de l'instance.
+            created_at (datetime): Date et heure de création de l'instance.
+            updated_at (datetime): Date et heure de dernière mise à
+            jour de l'instance.
         """
         if kwargs:
             for key, value in kwargs.items():

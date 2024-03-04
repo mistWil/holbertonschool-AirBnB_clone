@@ -80,6 +80,7 @@ class FileStorage:
                     class_name, obj_id = key.split('.')
                     from models.base_model import BaseModel
                     self.__objects[key] = BaseModel(**value)
-            print("Reloaded objects:", data)  # Ajout de cette ligne pour le débogage
+            # Supprimez ou commentez la ligne suivante pour éviter les sorties standard supplémentaires
+            # print("Reloaded objects:", data)
         except FileNotFoundError:
             pass
