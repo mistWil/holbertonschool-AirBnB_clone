@@ -78,8 +78,8 @@ class FileStorage:
                 data = json.load(file)
                 for key, value in data.items():
                     class_name, obj_id = key.split('.')
-                    # Ajoutez une importation locale de BaseModel ici
                     from models.base_model import BaseModel
                     self.__objects[key] = BaseModel(**value)
+            print("Reloaded objects:", data)  # Ajout de cette ligne pour le débogage
         except FileNotFoundError:
             pass
