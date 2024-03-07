@@ -139,57 +139,45 @@ class HBNBCommand(cmd.Cmd):
         print(instances)
 
     def do_update(self, arg):
-        """Updates an instance based on the class name and id"""
+        """
+        Update instances
+        """
         args = arg.split()
-
         if not args:
             print("** class name missing **")
             return
-
         class_name = args[0]
-
-        try :
-            new_instance = eval(class_name)()
+        try:
+            class_instance = eval(class_name)
         except NameError:
             print("** class doesn't exist **")
             return
-
         if len(args) < 2:
             print("** instance id missing **")
             return
-
-        instance_id = args[1]
-        key = "{}.{}".format(class_name, instance_id)
-        obj_dict = storage.all()
-
-        if key not in obj_dict:
-            print("** no instance found **")
-            return
-
-        if len(args) < 3:
-            print("** attribute name missing **")
-            return
-
-        attribute_name = args[2]
-
-        if len(args) < 4:
-            print("** value missing **")
-            return
-
-        attribute_value = args[3]
-
-        instance = obj_dict[key]
-        if hasattr(instance, attribute_name):
-            attr_type = type(getattr(instance, attribute_name))
-            try:
-                setattr(instance, attribute_name, attr_type(attribute_value))
-                instance.save()
-            except ValueError:
+        else:
+            class_id = args[1]
+            key = "{}.{}".format(class_name, class_id)
+            instance = storage._FileStorage__objects.get(key)
+            if instance is None:
+                print("** no instance found **")
+                return
+            if len(args) < 3:
+                print("** attribute name missing **")
+                return
+            if len(args) < 4:
                 print("** value missing **")
                 return
-        else:
-            print("** attribute doesn't exist **")
-            return
+            attr_name = args[2]
+            attr_value = args[3]
+            if attr_name in ["id", "created_at", "updated_at"]:
+                return
+            try:
+                attr_value = eval(attr_value)
+            except (NameError,  SyntaxError):
+                pass
+            setattr(instance, attr_name, attr_value)
+            instance.save()
 
 
 if __name__ == '__main__':
