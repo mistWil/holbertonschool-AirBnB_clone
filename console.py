@@ -96,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
         class_name = args[0]
 
         try:
-            new_instance = eval(class_name)()
+            class_instance = eval(class_name)()
         except NameError:
             print("** class doesn't exist **")
             return
@@ -105,16 +105,24 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
 
-        instance_id = args[1]
-        key = "{}.{}".format(class_name, instance_id)
-        obj_dict = storage.all()
-
-        if key not in obj_dict:
-            print("** no instance found **")
-            return
-
-        del obj_dict[key]
-        storage.save()
+        else:
+            class_name = args[0]
+            try:
+                class_instance = eval(class_name)
+            except NameError:
+                print("** class doesn't exist **")
+                return
+            if len(args) == 1:
+                print("** instance id missing **")
+            else:
+                class_id = args[1]
+                key = "{}.{}".format(class_name, class_id)
+                class_instances = storage._FileStorage__objects.get(key)
+                if class_instances:
+                    del storage._FileStorage__objects[key]
+                    storage.save()
+                else:
+                    print("** no instance found **")
 
     def do_all(self, arg):
         """
