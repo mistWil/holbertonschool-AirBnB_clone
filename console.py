@@ -136,8 +136,6 @@ class HBNBCommand(cmd.Cmd):
             instances = storage.all().values()
             print([str(instance) for instance in instances])
 
-        print(instances)
-
     def do_update(self, arg):
         """
         Update instances
