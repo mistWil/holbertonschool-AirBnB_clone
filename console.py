@@ -43,13 +43,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        class_name = arg.split()[0]
-
-        if class_name not in storage.all().keys():
+        class_name = arg
+        try :
+            new_instance = eval(class_name)()
+        except NameError:
             print("** class doesn't exist **")
             return
-
-        new_instance = eval(class_name)()
         new_instance.save()
         print(new_instance.id)
 
@@ -63,7 +62,9 @@ class HBNBCommand(cmd.Cmd):
 
         class_name = args[0]
 
-        if class_name not in storage.all().keys():
+        try :
+            new_instance = eval(class_name)()
+        except NameError:
             print("** class doesn't exist **")
             return
 
@@ -91,7 +92,9 @@ class HBNBCommand(cmd.Cmd):
 
         class_name = args[0]
 
-        if class_name not in storage.all().keys():
+        try :
+            new_instance = eval(class_name)()
+        except NameError:
             print("** class doesn't exist **")
             return
 
@@ -111,17 +114,27 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, arg):
-        """Prints all string representation of all instances"""
-        if arg:
-            class_name = arg.split()[0]
-            if class_name not in storage.all().keys():
+        """
+        Print all string representation of all instances
+        """
+        args = arg.split()
+        if len(args) == 1:
+            class_name = args[0]
+            try:
+                class_instance = eval(class_name)
+            except NameError:
                 print("** class doesn't exist **")
                 return
-
-            instances = [str(obj) for key, obj in storage.all().items()
-                         if key.split('.')[0] == class_name]
+            instances = storage.all().values()
+            filtered_instances = [str(instance) for instance in instances
+                                  if isinstance(instance, class_instance)]
+            if filtered_instances:
+                print(filtered_instances)
+            else:
+                print("** no instance found **")
         else:
-            instances = [str(obj) for obj in storage.all().values()]
+            instances = storage.all().values()
+            print([str(instance) for instance in instances])
 
         print(instances)
 
@@ -135,7 +148,9 @@ class HBNBCommand(cmd.Cmd):
 
         class_name = args[0]
 
-        if class_name not in storage.all().keys():
+        try :
+            new_instance = eval(class_name)()
+        except NameError:
             print("** class doesn't exist **")
             return
 
