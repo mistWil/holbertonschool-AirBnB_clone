@@ -65,27 +65,23 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        class_name = args[0]
-
-        try:
-            new_instance = eval(class_name)()
-        except NameError:
-            print("** class doesn't exist **")
-            return
-
-        if len(args) < 2:
-            print("** instance id missing **")
-            return
-
-        instance_id = args[1]
-        key = "{}.{}".format(class_name, instance_id)
-        obj_dict = storage.all()
-
-        if key not in obj_dict:
-            print("** no instance found **")
-            return
-
-        print(obj_dict[key])
+        else:
+            class_name = args[0]
+            try:
+                class_instance = eval(class_name)
+            except NameError:
+                print("** class doesn't exist **")
+                return
+            if len(args) == 1:
+                print("** instance id missing **")
+            else:
+                class_id = args[1]
+                key = "{}.{}".format(class_name, class_id)
+                instance = storage._FileStorage__objects.get(key)
+                if instance:
+                    print(instance)
+                else:
+                    print("** no instance found **")
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id"""
@@ -93,18 +89,6 @@ class HBNBCommand(cmd.Cmd):
 
         if not args:
             print("** class name missing **")
-            return
-
-        class_name = args[0]
-
-        try:
-            class_instance = eval(class_name)()
-        except NameError:
-            print("** class doesn't exist **")
-            return
-
-        if len(args) < 2:
-            print("** instance id missing **")
             return
 
         else:
