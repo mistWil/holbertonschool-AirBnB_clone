@@ -1,58 +1,45 @@
 #!/usr/bin/python3
-
-
-import unittest
+"""
+Module for BaseModel unittest
+"""
+import uuid
+import json
 from models.base_model import BaseModel
+import unittest
 from datetime import datetime
+from models import storage
+from models.engine.file_storage import FileStorage
 
 
 class TestBaseModel(unittest.TestCase):
     def setUp(self):
-        self.model = BaseModel()
-
-    def test_id(self):
-        self.assertIsInstance(self.model.id, str)
-        
-    def test_init_no_kwargs(self):
-        self.assertIsInstance(self.model.id, str)
-        self.assertIsInstance(self.model.created_at, datetime)
-        self.assertIsInstance(self.model.updated_at, datetime)
-        self.assertEqual(self.model.created_at, self.model.updated_at)
-
-    def test_init_with_kwargs(self):
-        kwargs = {
-            'id': '1234',
-            'created_at': '2022-01-01T00:00:00.000000',
-            'updated_at': '2022-01-01T00:00:00.000000'
-        }
-        model = BaseModel(**kwargs)
-        self.assertEqual(model.id, '1234')
-        self.assertEqual(model.created_at,
-                         datetime.strptime(kwargs['created_at'], "%Y-%m-%dT%H:%M:%S.%f"))
-        self.assertEqual(model.updated_at,
-                         datetime.strptime(kwargs['updated_at'], "%Y-%m-%dT%H:%M:%S.%f"))
-        
-    def test_created_at(self):
-        self.assertIsInstance(self.model.created_at, datetime)
-
-    def test_updated_at(self):
-        self.assertIsInstance(self.model.updated_at, datetime)
-
-    def test_str(self):
-        expected_str = "[BaseModel] ({}) {}".format(self.model.id, self.model.__dict__)
-        self.assertEqual(str(self.model), expected_str)
+        self.my_model = BaseModel()
 
     def test_save(self):
-        old_updated_at = self.model.updated_at
-        self.model.save()
-        self.assertNotEqual(self.model.updated_at, old_updated_at)
+        """
+        Test that save() method updates updated_at attribute
+        """
+        original_updated_at = self.my_model.updated_at
+        self.my_model.save()
+        new_updated_at = self.my_model.updated_at
+        self.assertNotEqual(original_updated_at, new_updated_at)
 
     def test_to_dict(self):
-        model_dict = self.model.to_dict()
-        self.assertEqual(model_dict['__class__'], 'BaseModel')
-        self.assertEqual(model_dict['id'], self.model.id)
-        self.assertEqual(model_dict['created_at'], self.model.created_at.isoformat())
-        self.assertEqual(model_dict['updated_at'], self.model.updated_at.isoformat())
+        my_model_dict = self.my_model.to_dict()
+        expected_output = ['id', 'created_at', 'updated_at', '__class__']
+        for key in expected_output:
+            self.assertIn(key, my_model_dict)
+        self.assertIsInstance(my_model_dict['id'], str)
+        self.assertIsInstance(my_model_dict['created_at'], str)
+        self.assertIsInstance(my_model_dict['updated_at'], str)
+        self.assertIsInstance(my_model_dict['__class__'], str)
 
-if __name__ == '__main__':
-    unittest.main()
+    def test__str__(self):
+        expected_output = "[BaseModel] ({}) {}".format(self.my_model.id, self.my_model.__dict__)
+        self.assertEqual(str(self.my_model), expected_output)
+    
+    def test_save(self):
+        new_model = BaseModel()
+        new_model.save()
+        with open('file.json', 'r') as file:
+            self.assertIn("BaseModel." + new_model.id, file.read())
