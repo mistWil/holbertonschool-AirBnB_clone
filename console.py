@@ -1,5 +1,8 @@
 #!/usr/bin/python3
+
+
 """Console module for AirBnB project"""
+
 
 import cmd
 from models import storage
@@ -44,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         class_name = arg
-        try :
+        try:
             new_instance = eval(class_name)()
         except NameError:
             print("** class doesn't exist **")
@@ -62,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
 
         class_name = args[0]
 
-        try :
+        try:
             new_instance = eval(class_name)()
         except NameError:
             print("** class doesn't exist **")
@@ -92,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
 
         class_name = args[0]
 
-        try :
+        try:
             new_instance = eval(class_name)()
         except NameError:
             print("** class doesn't exist **")
