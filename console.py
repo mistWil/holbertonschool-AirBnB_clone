@@ -46,14 +46,16 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        class_name = arg
-        try:
-            new_instance = eval(class_name)()
-        except NameError:
-            print("** class doesn't exist **")
-            return
-        new_instance.save()
-        print(new_instance.id)
+        else:
+            class_name = arg
+            try:
+                new_instance = eval(class_name)()
+            except NameError:
+                print("** class doesn't exist **")
+                return
+            else:
+                new_instance.save()
+                print("{}".format(new_instance.id))
 
     def do_show(self, arg):
         """Prints the string representation of an instance"""
