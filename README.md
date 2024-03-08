@@ -4,6 +4,20 @@ This project is a simplified version of the AirBnB website, focusing on creating
 ## Command Interpreter Description
 The command interpreter, console.py, allows users to interact with the system through a command-line interface. It provides functionality to create, show, destroy, update, and list instances of various classes, such as BaseModel and User.
 
+## REQUIREMENT
+
+Python scripts should be used.
+Editors allowed are vi, vim, and emacs.
+All files will be interpreted/compiled on Ubuntu 20.04 LTS using Python 3.8.5.
+Each file should end with a new line.
+The first line of all files should be exactly #!/usr/bin/python3.
+A README.md file at the root of the project folder is mandatory.
+Code should follow PEP 8 style guide (pycodestyle version 2.7.*).
+All files must be executable.
+The length of files will be tested using wc.
+All modules, classes, and functions should have documentation.
+Documentation should be meaningful sentences explaining the purpose (length will be verified).
+
 ## How to Start
 To start the command interpreter, simply run console.py in your terminal:
 $ ./console.py
@@ -18,7 +32,7 @@ update: Updates an instance based on the class name and ID by adding or updating
 Examples
 Here are some examples of how to use the command interpreter:
 
-## scss
+## EXAMPLES
 - `create BaseModel`: Creates a new instance of `BaseModel`, saves it to the JSON file, and prints the `id`.
 
 ```bash
