@@ -25,7 +25,6 @@ Here are some examples of how to use the command interpreter:
 (hbnb) create BaseModel
 fa0636af-8e8a-4642-961c-5c83a23d8d0d
 (hbnb)
-```bash
 (hbnb) all MyModel
 ** class doesn't exist **
 all BaseModel
@@ -33,6 +32,7 @@ all BaseModel
 (hbnb) destroy BaseModel 49faff9a-6318-451f-87b6-910505c55907
 (hbnb) show BaseModel 49faff9a-6318-451f-87b6-910505c55907
 ** no instance found **
+```
 
 ## User Class
 A new class, User, has been added to the project, which inherits from BaseModel. It has public class attributes: email, password, first_name, and last_name.
