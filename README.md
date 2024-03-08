@@ -69,6 +69,7 @@ The command interpreter has been updated to include the commands mentioned above
 
 No unit tests are needed for this project.
 
-Repo
+## Repo
 GitHub repository: https://github.com/mistWil/holbertonschool-AirBnB_clone.git
+
 File: console.py
