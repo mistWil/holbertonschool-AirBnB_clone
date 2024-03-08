@@ -40,13 +40,12 @@ EOF  help  quit
 (hbnb) quit
 $
 ```
-create: Creates a new instance of a specified class.
-show: Prints the string representation of an instance based on the class name and ID.
-destroy: Deletes an instance based on the class name and ID.
-all: Prints all string representations of instances based on the class name.
-update: Updates an instance based on the class name and ID by adding or updating attributes.
-Examples
-Here are some examples of how to use the command interpreter:
+## COMMAND
+`create`: Creates a new instance of a specified class.
+`show`: Prints the string representation of an instance based on the class name and ID.
+`destroy`: Deletes an instance based on the class name and ID.
+`all`: Prints all string representations of instances based on the class name.
+`update`: Updates an instance based on the class name and ID by adding or updating attributes.
 
 ## EXAMPLES
 - `create BaseModel`: This command will create a new instance of the BaseModel class, save it to the JSON file, and print its ID.
