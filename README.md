@@ -61,8 +61,9 @@ fa0636af-8e8a-4642-961c-5c83a23d8d0d
 (hbnb)
 (hbnb) all MyModel
 ```
-- 'Lors de la commande `show BaseModel 1234-1234-1234`', cela affiche la représentation en chaîne d'une instance en fonction du nom de la classe et de l'identifiant.
-- 'En exécutant la commande `destroy BaseModel 1234-1234-1234`', cela supprime une instance en fonction du nom de la classe et de l'identifiant.
+When running the command show BaseModel 1234-1234-1234, it displays the string representation of an instance based on the class name and ID.
+
+When executing the command destroy BaseModel 1234-1234-1234, it deletes an instance based on the class name and ID."
 ```
 ** class doesn't exist **
 all BaseModel
