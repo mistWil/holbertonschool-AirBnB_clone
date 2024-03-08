@@ -3,6 +3,7 @@
 
 from models.base_model import BaseModel
 
+
 class Place(BaseModel):
     """Represents a Place for AirBnB clone"""
     city_id = ""  # City.id

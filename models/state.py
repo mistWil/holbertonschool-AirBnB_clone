@@ -3,6 +3,7 @@
 
 from models.base_model import BaseModel
 
+
 class State(BaseModel):
     """Represents a State for AirBnB clone"""
     name = ""
