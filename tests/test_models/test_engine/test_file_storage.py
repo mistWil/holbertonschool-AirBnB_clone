@@ -2,6 +2,8 @@
 """
 Module for BaseModel unittest
 """
+
+
 import uuid
 import json
 from models.base_model import BaseModel
