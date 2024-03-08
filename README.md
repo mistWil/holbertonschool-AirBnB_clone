@@ -64,7 +64,7 @@ fa0636af-8e8a-4642-961c-5c83a23d8d0d
 When running the command show BaseModel 1234-1234-1234, it displays the string representation of an instance based on the class name and ID.
 
 When executing the command destroy BaseModel 1234-1234-1234, it deletes an instance based on the class name and ID."
-
+```
 ** class doesn't exist **
 all BaseModel
 ["[BaseModel] (2dd6ef5c-467c-4f82-9521-a772ea7d84e9) {'id': '2dd6ef5c-467c-4f82-9521-a772ea7d84e9', 'created_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639717), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639724)}", "[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'first_name': 'Betty', 'id': '49faff9a-6318-451f-87b6-910505c55907', 'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 3, 49401)}"]
