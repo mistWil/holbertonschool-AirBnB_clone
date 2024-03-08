@@ -33,7 +33,7 @@ Examples
 Here are some examples of how to use the command interpreter:
 
 ## EXAMPLES
-- `create BaseModel`: Creates a new instance of `BaseModel`, saves it to the JSON file, and prints the `id`.
+- `create BaseModel`: This command will create a new instance of the BaseModel class, save it to the JSON file, and print its ID.
 
 ```bash
 (hbnb) create BaseModel
@@ -41,8 +41,8 @@ fa0636af-8e8a-4642-961c-5c83a23d8d0d
 (hbnb)
 (hbnb) all MyModel
 ```
-- 'Lors de la commande show BaseModel 1234-1234-1234', cela affiche la représentation en chaîne d'une instance en fonction du nom de la classe et de l'identifiant.
-- 'En exécutant la commande destroy BaseModel 1234-1234-1234', cela supprime une instance en fonction du nom de la classe et de l'identifiant.
+- 'Lors de la commande `show BaseModel 1234-1234-1234`', cela affiche la représentation en chaîne d'une instance en fonction du nom de la classe et de l'identifiant.
+- 'En exécutant la commande `destroy BaseModel 1234-1234-1234`', cela supprime une instance en fonction du nom de la classe et de l'identifiant.
 ```
 ** class doesn't exist **
 all BaseModel
