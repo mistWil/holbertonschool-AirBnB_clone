@@ -26,6 +26,10 @@ Here are some examples of how to use the command interpreter:
 fa0636af-8e8a-4642-961c-5c83a23d8d0d
 (hbnb)
 (hbnb) all MyModel
+```
+- 'Lors de la commande show BaseModel 1234-1234-1234', cela affiche la représentation en chaîne d'une instance en fonction du nom de la classe et de l'identifiant.
+- 'En exécutant la commande destroy BaseModel 1234-1234-1234', cela supprime une instance en fonction du nom de la classe et de l'identifiant.
+```
 ** class doesn't exist **
 all BaseModel
 ["[BaseModel] (2dd6ef5c-467c-4f82-9521-a772ea7d84e9) {'id': '2dd6ef5c-467c-4f82-9521-a772ea7d84e9', 'created_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639717), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639724)}", "[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'first_name': 'Betty', 'id': '49faff9a-6318-451f-87b6-910505c55907', 'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 3, 49401)}"]
