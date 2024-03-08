@@ -2,6 +2,9 @@
 """
 New class to serialize instances to a JSON
 """
+
+
+import os
 import json
 
 
