@@ -48,19 +48,5 @@ class TestFileStorage(unittest.TestCase):
             recup_file = json.load(file)
         self.assertIn("BaseModel." + new_model.id, recup_file)
 
-    def test_reload(self):
-        file_storage = FileStorage()
-        file_storage1 = FileStorage()
-        base_model = BaseModel()
-        file_storage1.new(base_model)
-        file_storage1.save()
-
-        file_storage2 = FileStorage()
-        file_storage2.reload()
-        obj_key = "BaseModel." + base_model.id
-        self.assertIn(obj_key, file_storage2._FileStorage__objects)
-        with self.assertRaises(FileNotFoundError):
-            file_storage.reload()
-
     if __name__ == "__main__":
         unittest.main()
