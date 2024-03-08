@@ -24,6 +24,22 @@ $ ./console.py
 How to Use
 Once the command interpreter is running, you can use the following commands:
 
+##Execution
+Your shell should work like this in interactive mode:
+
+$ ./console.py
+```
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) 
+(hbnb) 
+(hbnb) quit
+$
+```
 create: Creates a new instance of a specified class.
 show: Prints the string representation of an instance based on the class name and ID.
 destroy: Deletes an instance based on the class name and ID.
