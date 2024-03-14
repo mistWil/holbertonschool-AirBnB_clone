@@ -8,27 +8,25 @@
     border-radius: 4px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding-right: 0%;
+    justify-content: space-between;
+    margin-right: 0px;
 }
 
 .locations,
 .amenities {
     width: 25%;
     height: 100%;
-    border-right: 1px solid #DDDDDD;
 }
 
 .amenities {
-    border-right: none;
     margin-right: 10rem;
     padding-left: 1rem;
+    border-left: solid #DDDDDD 1px;
 }
 
 .locations {
     align-content: flex-start;
     justify-content: flex-start;
-    padding-left: 1rem;
     margin-left: 1rem;
 
 }
@@ -54,6 +52,7 @@ h4 {
     border: none;
     border-radius: 4px;
     margin-right: 30px;
+    margin-left: 4rem;
     transition: opacity 0.3s ease;
 }
 
